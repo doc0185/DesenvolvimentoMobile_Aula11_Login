@@ -1,8 +1,10 @@
-package br.edu.ifsp.dmo.app11_login;
+package br.edu.ifsp.dmo.app11_login.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import br.edu.ifsp.dmo.app11_login.R;
 
 public class MainActivity extends AppCompatActivity {
 

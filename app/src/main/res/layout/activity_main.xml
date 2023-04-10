@@ -4,15 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <TextView
+    android:id="@+id/main_layout"
+    android:background="@color/background"
+    android:padding="16dp"
+    tools:context=".View.MainActivity">
+    
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/button_login"
+        android:layout_marginTop="64dp"
+        android:text="@string/entrar"
+        android:backgroundTint="@color/button"
+        app:layout_constraintStart_toStartOf="@id/editText_username"
+        app:layout_constraintEnd_toEndOf="@id/editText_username"
+        app:layout_constraintTop_toTopOf="@id/check_remember_login"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/check_remember_login"
+        android:layout_marginTop="24dp"
+        android:text="@string/lembrar_informa_es_de_login"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/editText_username"
+        app:layout_constraintEnd_toEndOf="@id/editText_username"
+        app:layout_constraintTop_toBottomOf="@id/editText_password"/>
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_username"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="64dp"
+        android:hint="@string/nome_de_usuario"
+        android:textColor="@color/black"
+        android:background="@color/white"
+        android:textAlignment="center"
+        android:padding="8dp"
+        android:inputType="text"/>
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_password"
+        android:layout_marginTop="24dp"
+        android:hint="@string/senha"
+        android:textColor="@color/black"
+        android:background="@color/white"
+        android:textAlignment="center"
+        android:padding="8dp"
+        android:inputType="numberPassword"
+        app:layout_constraintStart_toStartOf="@id/editText_username"
+        app:layout_constraintEnd_toEndOf="@id/editText_username"
+        app:layout_constraintTop_toBottomOf="@id/editText_username"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_add_user"
+        android:layout_margin="16dp"
+        android:src="@drawable/person_add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
