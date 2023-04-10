@@ -7,13 +7,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import br.edu.ifsp.dmo.app11_login.Controller.MainController;
+import br.edu.ifsp.dmo.app11_login.Exception.IllegalInputException;
+import br.edu.ifsp.dmo.app11_login.Exception.UserNotFoundException;
 import br.edu.ifsp.dmo.app11_login.R;
 
 public class MainActivity extends AppCompatActivity {
-
+    
+    private MainController controller;
     private Button mButton;
     private CheckBox mCheckBox;
     private EditText mUsernameEditText;
@@ -28,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         findById();
         setListener();
         getSupportActionBar().hide();
+        controller = new MainController(this);
     }
 
     private void findById(){
@@ -42,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //login();
+                login();
             }
         });
 
@@ -52,5 +58,18 @@ public class MainActivity extends AppCompatActivity {
                 //addUser();
             }
         });
+    }
+    
+    private void login(){
+        String username = mUsernameEditText.getText().toString();
+        String password = mPasswordEditText.getText().toString();
+        try{
+            controller.login(username, password, mCheckBox.isChecked());
+        } catch (UserNotFoundException e) {
+            Toast.makeText(this, "Usuário não cadastrado", Toast.LENGTH_SHORT).show();
+        } catch (IllegalInputException e) {
+            Toast.makeText(this, "Dados de login inválidos", Toast.LENGTH_SHORT).show();
+        }
+
     }
 }
