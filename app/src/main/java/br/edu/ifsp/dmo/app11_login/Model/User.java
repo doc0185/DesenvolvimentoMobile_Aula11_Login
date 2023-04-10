@@ -1,6 +1,12 @@
 package br.edu.ifsp.dmo.app11_login.Model;
 
+import android.util.Log;
+
 import androidx.annotation.Nullable;
+
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class User {
     private static final String TAG = User.class.getSimpleName();
@@ -42,7 +48,28 @@ public class User {
         return equals;
     }
 
-    private void generatePassword(String password){
-
+    public static boolean autenticate(User userSystem, User userLogin){
+        return userLogin.equals(userSystem);
     }
+
+    private void generatePassword(String password){
+        try{
+            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+            byte bytes[] = messageDigest.digest(password.getBytes("UTF-8"));
+
+            StringBuilder sb = new StringBuilder();
+            for(byte b: bytes){
+                sb.append(String.format("%02X", 0xFF & b));
+            }
+            this.password = sb.toString();
+        } catch (UnsupportedEncodingException e) {
+            Log.e(TAG, "Error encoding process");
+            this.password = password;
+        } catch (NoSuchAlgorithmException e) {
+            Log.e(TAG, "Error Algorithm SHA-256");
+            this.password = password;
+        }
+    }
+
+
 }
