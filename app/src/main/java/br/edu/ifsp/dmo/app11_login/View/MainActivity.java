@@ -37,6 +37,13 @@ public class MainActivity extends AppCompatActivity {
         controller = new MainController(this);
     }
 
+    @Override
+    protected void onStop() {
+        mUsernameEditText.setText("");
+        mPasswordEditText.setText("");
+        super.onStop();
+    }
+
     private void findById(){
         mButton = findViewById(R.id.button_login);
         mCheckBox = findViewById(R.id.check_remember_login);

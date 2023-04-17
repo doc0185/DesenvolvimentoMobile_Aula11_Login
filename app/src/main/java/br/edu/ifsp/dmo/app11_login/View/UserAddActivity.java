@@ -79,7 +79,7 @@ public class UserAddActivity extends AppCompatActivity {
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                // saveUser();
+                saveUser();
             }
         });
     }
