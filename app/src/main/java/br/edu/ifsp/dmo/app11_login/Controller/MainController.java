@@ -3,6 +3,8 @@ package br.edu.ifsp.dmo.app11_login.Controller;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.widget.CheckBox;
+import android.widget.EditText;
 
 import br.edu.ifsp.dmo.app11_login.Constant.Constants;
 import br.edu.ifsp.dmo.app11_login.DAO.IUserDAO;
@@ -19,6 +21,21 @@ public class MainController {
     public MainController(Context context){
         this.context = context;
         data = UserDAOImpl.getInstance();
+    }
+
+    public void checkPreferences(EditText user, EditText pass, CheckBox remember){
+        String username, password;
+        boolean savePrefs;
+
+        SharedPreferences preferences = context.getSharedPreferences(Constants.FILE_LOGIN_PREFS, Context.MODE_PRIVATE);
+        savePrefs = preferences.getBoolean(Constants.KEY_PREF, false);
+        if(savePrefs){
+            username = preferences.getString(Constants.KEY_USER, "");
+            password = preferences.getString(Constants.KEY_PASSW, "");
+            user.setText(username);
+            pass.setText(password);
+        }
+        remember.setChecked(savePrefs);
     }
 
     public void login(String username, String password, boolean savePreference) throws UserNotFoundException, IllegalInputException {

@@ -38,6 +38,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        controller = new MainController(this);
+        controller.checkPreferences(mUsernameEditText, mPasswordEditText, mCheckBox);
+        super.onResume();
+    }
+
+    @Override
     protected void onStop() {
         mUsernameEditText.setText("");
         mPasswordEditText.setText("");
