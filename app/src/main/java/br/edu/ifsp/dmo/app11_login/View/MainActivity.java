@@ -2,6 +2,7 @@ package br.edu.ifsp.dmo.app11_login.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //addUser();
+                addUser();
             }
         });
     }
@@ -71,5 +72,10 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Dados de login inválidos", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    private void addUser(){
+        Intent intent = new Intent(this, UserAddActivity.class);
+        startActivity(intent);
     }
 }
