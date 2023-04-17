@@ -1,6 +1,7 @@
 package br.edu.ifsp.dmo.app11_login.Controller;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 
 import br.edu.ifsp.dmo.app11_login.Constant.Constants;
@@ -9,6 +10,7 @@ import br.edu.ifsp.dmo.app11_login.DAO.UserDAOImpl;
 import br.edu.ifsp.dmo.app11_login.Exception.IllegalInputException;
 import br.edu.ifsp.dmo.app11_login.Exception.UserNotFoundException;
 import br.edu.ifsp.dmo.app11_login.Model.User;
+import br.edu.ifsp.dmo.app11_login.View.WorkingActivity;
 
 public class MainController {
     private Context context;
@@ -31,10 +33,16 @@ public class MainController {
 
         if(User.autenticate(search, loginUser)){
             remember(username, password, savePreference);
-            //TODO ABRIR OUTRA ACTIVITY
+            openWorkingActivity(search);
         } else{
             throw new IllegalInputException("Illegal data input to login.");
         }
+    }
+
+    private void openWorkingActivity(User u){
+        Intent intent = new Intent(context, WorkingActivity.class);
+        intent.putExtra(Constants.KEY_USER, u.getUsername());
+        context.startActivity(intent);
     }
 
     private void remember(String username, String password, boolean savePreference){
