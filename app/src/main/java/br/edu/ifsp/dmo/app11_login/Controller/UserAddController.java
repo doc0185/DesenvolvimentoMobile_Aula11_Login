@@ -4,6 +4,7 @@ import android.content.Context;
 
 import br.edu.ifsp.dmo.app11_login.DAO.IUserDAO;
 import br.edu.ifsp.dmo.app11_login.DAO.UserDAOImpl;
+import br.edu.ifsp.dmo.app11_login.DAO.UserDAOJson;
 import br.edu.ifsp.dmo.app11_login.Exception.IllegalInputException;
 import br.edu.ifsp.dmo.app11_login.Exception.UserDuplicatedException;
 import br.edu.ifsp.dmo.app11_login.Model.User;
@@ -15,7 +16,8 @@ public class UserAddController {
 
     public UserAddController(Context context){
         this.context = context;
-        data = UserDAOImpl.getInstance();
+        //data = UserDAOImpl.getInstance();
+        data = new UserDAOJson(context);
     }
 
     public boolean insertUser(String username, String password, String confirm) throws UserDuplicatedException, IllegalInputException {

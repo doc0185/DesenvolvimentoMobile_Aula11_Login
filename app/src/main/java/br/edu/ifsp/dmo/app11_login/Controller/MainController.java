@@ -9,6 +9,7 @@ import android.widget.EditText;
 import br.edu.ifsp.dmo.app11_login.Constant.Constants;
 import br.edu.ifsp.dmo.app11_login.DAO.IUserDAO;
 import br.edu.ifsp.dmo.app11_login.DAO.UserDAOImpl;
+import br.edu.ifsp.dmo.app11_login.DAO.UserDAOJson;
 import br.edu.ifsp.dmo.app11_login.Exception.IllegalInputException;
 import br.edu.ifsp.dmo.app11_login.Exception.UserNotFoundException;
 import br.edu.ifsp.dmo.app11_login.Model.User;
@@ -20,7 +21,8 @@ public class MainController {
 
     public MainController(Context context){
         this.context = context;
-        data = UserDAOImpl.getInstance();
+        // data = UserDAOImpl.getInstance();
+        data = new UserDAOJson(context);
     }
 
     public void checkPreferences(EditText user, EditText pass, CheckBox remember){
