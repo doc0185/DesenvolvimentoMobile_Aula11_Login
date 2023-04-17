@@ -4,4 +4,6 @@
     <string name="entrar">Entrar</string>
     <string name="senha">Senha</string>
     <string name="lembrar_informa_es_de_login">Lembrar informações de Login</string>
+    <string name="confirmar_senha">Confirmar Senha</string>
+    <string name="salvar_usuario">Salvar Usuário</string>
 </resources>
